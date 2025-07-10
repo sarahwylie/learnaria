@@ -1,12 +1,12 @@
 ;(function ( $, window, document, undefined ) {
- 
+
 	var pluginName = 'ik_togglebutton',
-		defaults = {
-			"label": "toggle button",
-			"isPressed": false,
-			"onToggle": function() { console.log('toggle action is undefined'); }
-		};
-	 
+	defaults = {
+		"label": "toggle button",
+		"isPressed": false,
+		"onToggle": function() { console.log('toggle action is undefined'); }
+	};
+	
 	/**
 	 * @constructs Plugin
 	 * @param {Object} element - Current DOM element from selected collection.
@@ -31,19 +31,18 @@
 		id = 'toggle' + $('.ik_togglebutton').length; // generate unique id
 		$elem = this.element
 			.attr({
-				"id": id //,
-//			"tabindex": 0,
-//			"role": "button",
-//			"aria-label": plugin.options.label,
-//			"aria-pressed": false
+				"id": id,
+				"tabindex": 0,
+				"role": "button",
+				"aria-label": plugin.options.label,
+				"aria-pressed": false
 			});
 		
 		plugin.options.onToggle = plugin.options.onToggle.bind(plugin);
 		
 		$elem
 			.on('click', {plugin: plugin}, plugin.onActivate)
-//		.on('keydown', {plugin: plugin}, plugin.onActivate)
-		;
+			.on('keydown', {plugin: plugin}, plugin.onActivate);
 		
 	};
 	
@@ -68,21 +67,18 @@
 			if (plugin.options.isPressed) {
 				$me
 					.removeClass('pressed')
-//				.attr({
-//					"aria-pressed": false
-//				})
-					;
+					.attr({
+						"aria-pressed": false
+					});
 				plugin.options.isPressed = false;
 			} else {
 				$me
 					.addClass('pressed')
-//				.attr({
-//				  "aria-pressed": true
-//					})
-          ;
+					.attr({
+						"aria-pressed": true
+					});
 				plugin.options.isPressed = true;
 			}
-			
 			plugin.options.onToggle();
 		}
 		
@@ -100,5 +96,4 @@
 		});
 		
 	}
- 
 })( jQuery, window, document );
