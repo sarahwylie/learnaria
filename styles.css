@@ -218,12 +218,12 @@ li {
 
 /* link attributes */
 a:link, a:visited  {
-	color: #4183C4;
+	color: #285481;
 }
 
 a:hover {
 	color: #932318;
-	color:#ffffff;
+	/* color:#ffffff; */
 }
 
 a:active {
@@ -310,7 +310,7 @@ div.box a:link {
 }
 
 div.box a:visited {
-	color: #2A6C28;
+	color: #1E521E;
 	text-decoration: none;
 }
 
@@ -489,7 +489,7 @@ ul.social_side_menu {
 	padding-left: 2em;
 }
 ul.social_side_menu li {
-	padding-bottom: 0.2em;
+	padding: 0.6em 0.2em;
 	list-style: circle;
 }
 
