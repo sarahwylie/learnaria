@@ -7,18 +7,18 @@
         <link rel="stylesheet" href="styles.css" type="text/css">
 
         <script src="join.lib.js"></script>
-	    <script src="join.js"></script>
+		<script src="join.js"></script>
     </head>
 <body> 
 <div id="top-bar">&nbsp; </div>
 <div class="page_wrapper">
-	<div id="header">
+	<div role="banner" id="header">
 		<div id="course_title_container" style="left:1em;">		
 			<h1 id="section-title">Our Community Website</h1>
 		</div>
 	</div>
 
-	<div class="" style="z-index: auto; position: static; top: auto;" id="lrg_topnav">
+	<div role="navigation" class="" style="z-index: auto; position: static; top: auto;" id="lrg_topnav">
 		<div style="width: 100%;" id="topnavlistcontainer" aria-label="main navigation tabs">
 			<a id="main-nav"></a>
 			<ul style="" id="topnavlist">
@@ -32,15 +32,15 @@
 		</div> 
 	</div>
 
-	<div class="logoutbar">&nbsp; <input type="text" class="input"><input type="submit" value="search"></div>
+	<div role="search" class="logoutbar">&nbsp; <input type="text" class="input"><input type="submit" value="search"></div>
 	<div class="crumbcontainer">
-			<div id="breadcrumbs" tabindex="0" aria-label="breadcrumb links">&nbsp;</div>
+		<div id="breadcrumbs" tabindex="0" aria-label="breadcrumb links">&nbsp;</div>
 	</div>
 	<div id="contentwrapper">
 		<div id="lrg_content">
-			<div id="leftcolumn">
-			  <a id="menu"></a>
-				 <div id="side-menu" aria-label="left side, secondary menu" accesskey="0">
+			<div role="navigation" id="leftcolumn">
+				<a id="menu"></a>
+				<div id="side-menu" aria-label="left side, secondary menu" accesskey="0">
 					<br/>
 					<h2 class="box"><span>Networking</span></h2>
 					<div class="box" id="menu_Networking">
@@ -71,10 +71,10 @@
 		<br style="clear:both;">
 		<a id="top"></a>
 
-	<div class="profile">
+	<div role="main" class="profile">
 		<h2>Join our community</h2>
 		<div id="feedback">&nbsp;</div>
-		<form id="join_form">
+		<form role="form" id="join_form">
 		<dl>
 			<dt>
 			<img src="images/required.gif" height="14" width="14" alt="Required Field" /> denotes required fields.<br />
@@ -84,7 +84,7 @@
 			<dt>
 				<label for="username">Username:</label><img src="images/required.gif"  alt="Required Field" class="img" />
 			</dt>
-			<dd><input id="username" class="input" type="text" value="" maxlength="30" size="20" name="username"  aria-required="true" aria-describedby="username_error"><br />
+			<dd><input role="alert" id="username" class="input" type="text" value="" maxlength="30" size="20" name="username"  aria-required="true" aria-describedby="username_error"><br />
 				<span id="username_error">&nbsp;</span><br />
 			</dd>
 			<dt>
@@ -157,10 +157,10 @@
 				<input type="text" name="state" id="state" maxlength="2" class="input"/>
 				<span id="state_error">&nbsp;</span>
 			</dd>
-			 <dt class="state_block">   
+			<dt class="state_block">   
 				<label for="zip">ZIP Code:</label>
-			 </dt>
-			 <dd class="state_block">
+			</dt>
+			<dd class="state_block">
 				<input type="text" name="zip" id="zip"  class="input"/>
 				<span id="zip_error">&nbsp;</span><br />
 			</dd>
@@ -202,18 +202,18 @@
 		</dl>
 		<br  style="clear:both;"/>
 		<div>
-			<input type="button" id="join" value="Join" /> &nbsp;
+			<input type="button" role="alert" id="join" value="Join" /> &nbsp;
 			<input type="button" id="reset_form" value="Reset" /><br />
 		</div>
 		</form>
 		<br  style="clear:both;"/>
 
-			<br style="width:100%;clear:both;" />
+		<br style="width:100%;clear:both;" />
 
-		</div>
-		<div id="advertising">
+	</div>
+	<div role="complementary" id="advertising">
 		<h2>Advertising</h2>
-			<div>
+		<div>
 				<img src="images/rum_cover.jpg" alt="" />
 				<br style="clear:both;"/>
 			</div>
@@ -224,8 +224,7 @@
 <p><br><br>&nbsp;</p>
 </div>
 
-<div id="footer"> Copyright &copy; <a href="" class="fake">Chang School.</a>
-</div>
+<div role="contentinfo" id="footer"> Copyright &copy; <a href="" class="fake">Chang School.</a></div>
 
 </body>
 </html>
