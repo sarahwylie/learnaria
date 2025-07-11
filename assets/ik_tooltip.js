@@ -77,7 +77,7 @@
 						})
 						.addClass('visible');
 				})
-				.on('mouseout blur', function(event) {
+				.on('mouseout blur keyup', function(event) {
 					
 					if (!$(event.currentTarget).is(':focus') ) { // hide tooltip if current element is not focused
 						
@@ -86,6 +86,13 @@
 								'aria-hidden': 'true'
 							})
 							.removeClass('visible mouseover');					
+					} else if (event.keyCode == ik_utils.keys.esc) { // hide when escape key is pressed
+
+						$tooltip
+							.attr({
+								'aria-hidden': 'true'
+							})
+							.removeClass('visible');
 					}
 				})
 		}
