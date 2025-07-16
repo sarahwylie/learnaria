@@ -1,8 +1,8 @@
 ;(function ( $, window, document, undefined ) {
 	
 	var pluginName = 'ik_progressbar',
-		defaults = { // values can be overitten by passing configuration options to plugin constructor 
-			'instructions': 'Press spacebar, or Enter to get progress',
+		defaults = { // values can be overwritten by passing configuration options to plugin constructor 
+			'instructions': 'Press spacebar or Enter to get progress',
 			'max': 100
 		};
 	
@@ -27,13 +27,18 @@
 	/** Initializes plugin. */
 	Plugin.prototype.init = function () { // initialization function
 		
-		var id = 'pb' + $('.ik_progressbar').length;
+		var id = 'progressbar_' + $('.ik_progressbar').length;
 				
 		this.element
 			.attr({
 				'id': id,
 				'tabindex': -1, // add current element to tab oder
-				'aria-describedby': id + '_instructions' // add aria-describedby attribute 
+				'role': 'progressbar', // assign progressbar role
+				'aria-valuenow': 0, // set current value to 0
+				'aria-valuemin': 0, // set minimum (start) value to 0 (required by screen readers)
+				'aria-valuemax': this.options.max, // set maximum (end) value
+				'aria-describedby': id + '_instructions', // add aria-describedby attribute 
+				'aria-label': 'Download progress'
 			})
 			.addClass('ik_progressbar')
 			.on('keydown.ik', {'plugin': this}, this.onKeyDown);
@@ -41,21 +46,11 @@
 		this.fill = $('<div/>')
 			.addClass('ik_fill');
 			
-		this.notification = $('<div/>') // add div element to be used to notify about the status of download
-			.attr({
-				'aria-role': 'region', // make it a live region
-				'aria-live': 'assertive', // set notofocation priority to high
-				'aria-atomic': 'additions' // notify only about newly added text
-			})
-			.addClass('ik_readersonly')
-			.appendTo(this.element);
-		
-		$('<div/>') // add div element to be used with aria-described attribute of the progressbar
+		this.notification = $('<div/>') // add div element to be used with aria-described attribute of the progressbar
 			.text(this.options.instructions) // get instruction text from plugin options
 			.addClass('ik_readersonly') // hide element from visual display
 			.attr({
-				'id': id + '_instructions', 
-				'aria-hidden': 'true'  // hide element from screen readers to prevent it from being read twice
+				'id': id + '_instructions', // set id to be used with aria-describedby attribute
 			})
 			.appendTo(this.element);
 			
@@ -67,7 +62,7 @@
 	};
 	
 	/** 
-	 * Handles kedown event on progressbar element. 
+	 * Handles keydown event on progressbar element. 
 	 *
 	 * @param {Object} event - Keyboard event.
 	 * @param {object} event.data - Event data.
@@ -89,7 +84,7 @@
 	};
 	
 	/** 
-	 * Gets the current value of progressbar. 
+	 * Gets the current numerical value of progressbar. 
 	 *
 	 * @returns {number} 
 	 */
@@ -97,14 +92,14 @@
 		
 		var value;
 		
-		value = Number( this.element.data('value') );
+		value = Number( this.element.attr('aria-valuenow') );
 				
 		return parseInt( value );
 		
 	};
 	
 	/** 
-	 * Gets the current value of progressbar. 
+	 * Gets the current percentage value of progressbar. 
 	 *
 	 * @returns {number} 
 	 */
@@ -138,9 +133,9 @@
 		}
 		
 		this.element
-			.data({
-				'value': parseInt(val) 
-			});
+			.attr({
+				'aria-valuenow': val, // update current value
+			})
 		
 		this.updateDisplay();
 		
@@ -157,9 +152,22 @@
 	
 	/** Updates text in live region to notify about current status. */
 	Plugin.prototype.notify = function() {
-		
-		this.notification.text(  this.getPercent() + '%' );
-		
+		// Define the current and minimum values.
+		// The maximum value message is defined in the html file.
+		var valueNow = parseInt(this.element.attr('aria-valuenow'), 10);
+		var valueMin = parseInt(this.element.attr('aria-valuemin'), 10);
+
+		var message = '';
+		// If the value is at the minimum (zero), we provide instructions.
+		if (valueNow === valueMin) {
+			message = this.options.instructions;
+		} else {
+			// Otherwise, we provide the current percentage.
+			message = this.getPercent() + '%';
+		}
+		// Append a zero-width space to ensure the message is read by screen readers.
+		message += String.fromCharCode(8203);
+		$('#status').text(message);
 	};
 	
 	/** Resets progressbar. */
