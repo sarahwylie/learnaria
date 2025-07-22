@@ -51,7 +51,7 @@ button {
   display: inline-block;
   margin: 2px;
   padding: 8px 12px;
-  border: none;
+  border: 2px solid #121212;
   -webkit-border-top-left-radius: 3px;
   -webkit-border-top-right-radius: 3px;
   -webkit-border-bottom-left-radius: 3px;
@@ -67,14 +67,15 @@ button {
   -webkit-box-shadow: inset -1px -1px 0 rgba(0, 0, 0, 0.25), inset 1px 1px 0 rgba(255, 255, 255, 0.25);
   -moz-box-shadow: inset -1px -1px 0 rgba(0, 0, 0, 0.25), inset 1px 1px 0 rgba(255, 255, 255, 0.25);
   box-shadow: inset -1px -1px 0 rgba(0, 0, 0, 0.25), inset 1px 1px 0 rgba(255, 255, 255, 0.25);
-  background-color: #8A1000;
-  color: #fff;
+  background-color: #f76;
+  color: #121212;
   font: inherit;
   cursor: pointer;
 }
 button:hover,
 button:focus {
-  background-color: #ff8e80;
+  background-color: #330700;
+  color: #fff;
 }
 button:active {
   box-shadow: none;
@@ -84,7 +85,7 @@ button[disabled]:active,
 button[disabled]:hover,
 button[disabled]:focus {
   background-color: #ddd;
-  color: #ccc;
+  color: #5C5C5C;
   box-shadow: none;
   cursor: default;
 }
@@ -100,7 +101,8 @@ button[disabled]:focus {
 .ik_progressbar .ik_track {
   position: relative;
   height: 5px;
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: #ccc;
+  border: 2px solid #121212;
 }
 .ik_progressbar .ik_fill {
   content: '';
@@ -868,7 +870,7 @@ button[disabled]:focus {
 }
 .buttongroup {
   display: flex;
-  flex-floe: row nowrap;
+  flex-flow: row nowrap;
 }
 .buttongroup .toggle {
   width: 3em;

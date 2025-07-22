@@ -32,8 +32,7 @@
 			.attr({
 				'id': id,
 			})
-			.addClass('ik_progressbar')
-      ;
+			.addClass('ik_progressbar');
 		
 		this.fill = $('<div/>')
 			.addClass('ik_fill');
@@ -98,16 +97,12 @@
 		this.element
 			.data({ // inaccessible
 				'value': parseInt(val) 
-			}) 
-      ;
-		
+			});
 		this.updateDisplay();
-		
 	};
 	
 	/** Updates visual display. */
 	Plugin.prototype.updateDisplay = function() {
-		
 		this.fill.css({
 			'transform': 'scaleX(' + this.getPercent() / 100 + ')'
 		});
